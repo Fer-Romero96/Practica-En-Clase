@@ -6,6 +6,8 @@ let jsonParser = bodyParser.json();
 let app = express();
 let { StudentList } = require("./model");
 let server;
+let {DATABASE_URL, PORT} = require("./config");
+
 
 app.use(express.static("public"));
 
@@ -178,6 +180,7 @@ function closeServer(){
     });
 }
 
-runServer(8080, "mongodb://localHost/university");
+//runServer(8080, "mongodb://localHost/university");
+runServer(PORT, DATABASE_URL);
 
 module.exports = (app, runServer, closeServer);
